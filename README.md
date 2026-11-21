@@ -55,6 +55,19 @@ This project uses Tailwind CSS for styling with the following features:
 - Responsive design utilities
 - PostCSS and Autoprefixer integration
 
+## 🔐 Admin access
+
+`/admin-dashboard` requires a signed-in Supabase user with admin rights. Unauthenticated visitors are redirected to `/admin-login`.
+
+1. Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` (Supabase → Project Settings → API).
+2. Create the admin user in Supabase → Authentication → Users (email + password).
+3. Grant admin rights in **one** of these ways:
+   - Set the server-only env var `ADMIN_EMAILS` to a comma-separated list, e.g. `ADMIN_EMAILS=owner@example.com`, or
+   - Set the user's `app_metadata` to `{ "role": "admin" }` (users cannot edit their own app_metadata).
+4. Recommended: turn off public sign-ups in Supabase → Authentication → Providers → Email.
+
+If neither is configured, nobody can open the dashboard (fail closed).
+
 ## 📦 Available Scripts
 
 - `npm run dev` - Start development server on port 4028
