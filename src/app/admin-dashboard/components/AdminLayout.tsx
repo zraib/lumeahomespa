@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 import AppLogo from '@/components/ui/AppLogo';
 import {
   LayoutDashboard,
@@ -26,8 +27,27 @@ const navItems = [
   { id: 'nav-settings', label: 'Settings', icon: Settings, href: '/admin-dashboard', badge: null },
 ];
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function AdminLayout({
+  children,
+  userEmail = '',
+}: {
+  children: React.ReactNode;
+  userEmail?: string;
+}) {
   const [collapsed, setCollapsed] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
+  const router = useRouter();
+  const { signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    setSigningOut(true);
+    try {
+      await signOut();
+    } finally {
+      router.replace('/admin-login');
+      router.refresh();
+    }
+  };
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
@@ -93,7 +113,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <MessageCircle size={18} className="shrink-0" />
             {!collapsed && <span className="text-sm font-medium">View Site</span>}
           </Link>
-          <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:bg-white/10 hover:text-white transition-colors">
+          <button
+            onClick={handleSignOut}
+            disabled={signingOut}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:bg-white/10 hover:text-white transition-colors disabled:opacity-50"
+          >
             <LogOut size={18} className="shrink-0" />
             {!collapsed && <span className="text-sm font-medium">Sign Out</span>}
           </button>
@@ -141,6 +165,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 </Link>
               ))}
             </nav>
+            <div className="px-2 pb-4 border-t border-white/10 pt-3">
+              <button
+                onClick={handleSignOut}
+                disabled={signingOut}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:bg-white/10 hover:text-white transition-colors disabled:opacity-50"
+              >
+                <LogOut size={18} />
+                <span className="text-sm font-medium">Sign Out</span>
+              </button>
+            </div>
           </aside>
         </div>
       )}
@@ -167,8 +201,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Bell size={18} className="text-muted-foreground" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500" />
             </button>
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/30 to-primary/60 flex items-center justify-center text-xs font-bold text-primary ml-1">
-              A
+            <div
+              title={userEmail}
+              className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/30 to-primary/60 flex items-center justify-center text-xs font-bold text-primary ml-1"
+            >
+              {(userEmail.charAt(0) || 'A').toUpperCase()}
             </div>
           </div>
         </header>
