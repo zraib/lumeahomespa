@@ -95,7 +95,9 @@ export default function BookingFlow() {
             Home Massage Dubai
           </span>
           <h1 className="text-4xl font-bold text-white mb-2">Book Your Session</h1>
-          <p className="text-white/60 text-base">Select your treatment and we'll come to you.</p>
+          <p className="text-white/60 text-base">
+            Select your treatment and we&apos;ll come to you.
+          </p>
         </div>
       </div>
 

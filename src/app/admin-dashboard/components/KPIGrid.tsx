@@ -4,7 +4,7 @@ import { CalendarCheck, TrendingUp, AlertCircle, CheckCircle2, XCircle } from 'l
 const kpis = [
   {
     id: 'kpi-today',
-    label: "Today\'s Bookings",
+    label: "Today's Bookings",
     value: '7',
     sub: '3 confirmed · 4 pending',
     icon: CalendarCheck,

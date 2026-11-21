@@ -18,7 +18,7 @@ export default function WhatsAppCTA() {
         </span>
         <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">Book Your Session Today</h2>
         <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
-          Choose your treatment, select a time, and confirm via WhatsApp. We'll be at your door
+          Choose your treatment, select a time, and confirm via WhatsApp. We&apos;ll be at your door
           ready to transform your space into a luxury spa.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">

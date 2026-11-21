@@ -76,7 +76,7 @@ export default function ClientDetailsForm({
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-1">Your Details</h2>
         <p className="text-muted-foreground text-sm">
-          We'll use this to confirm your appointment via WhatsApp.
+          We&apos;ll use this to confirm your appointment via WhatsApp.
         </p>
       </div>
 
@@ -123,12 +123,12 @@ export default function ClientDetailsForm({
             WhatsApp Number <span className="text-red-500">*</span>
           </label>
           <p className="text-xs text-muted-foreground mb-2">
-            We'll send confirmation to this number
+            We&apos;ll send confirmation to this number
           </p>
           <input
             {...register('phone', {
               required: 'Phone number is required',
-              pattern: { value: /^[\d\s\+\-\(\)]{9,15}$/, message: 'Enter a valid phone number' },
+              pattern: { value: /^[\d\s+\-()]{9,15}$/, message: 'Enter a valid phone number' },
             })}
             type="tel"
             placeholder="+971 50 000 0000"

@@ -79,7 +79,7 @@ export default function TodaySchedule() {
     <div className="bg-white rounded-2xl border border-border p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-base font-bold text-foreground">Today's Schedule</h3>
+          <h3 className="text-base font-bold text-foreground">Today&apos;s Schedule</h3>
           <p className="text-xs text-muted-foreground">Saturday, 02 May 2026 — 7 appointments</p>
         </div>
         <div className="flex items-center gap-2">

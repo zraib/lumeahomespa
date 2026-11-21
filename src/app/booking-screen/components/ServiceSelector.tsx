@@ -165,7 +165,7 @@ export default function ServiceSelector({
     <div>
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-1">Choose Your Treatment</h2>
-        <p className="text-muted-foreground text-sm">Select the service you'd like to book.</p>
+        <p className="text-muted-foreground text-sm">Select the service you&apos;d like to book.</p>
       </div>
 
       {/* Category filter */}

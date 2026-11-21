@@ -99,7 +99,7 @@ export default function BookingSummary({
           <div className="flex items-start gap-3 p-3 rounded-xl bg-green-50 border border-green-100">
             <MessageCircle size={16} className="text-green-600 mt-0.5 shrink-0" />
             <p className="text-xs text-green-700 leading-relaxed">
-              Your booking will be confirmed via WhatsApp. We'll respond within 15 minutes.
+              Your booking will be confirmed via WhatsApp. We&apos;ll respond within 15 minutes.
             </p>
           </div>
         </div>
