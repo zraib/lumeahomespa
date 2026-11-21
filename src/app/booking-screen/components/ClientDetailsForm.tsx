@@ -5,10 +5,26 @@ import { ArrowLeft, MessageCircle, Loader2, CheckCircle } from 'lucide-react';
 import type { BookingState, ClientDetails } from './BookingFlow';
 
 const DUBAI_AREAS = [
-  'Downtown Dubai', 'Dubai Marina', 'JBR', 'Palm Jumeirah', 'Business Bay',
-  'DIFC', 'Jumeirah', 'Jumeirah Beach Residence', 'Al Barsha', 'Deira',
-  'Bur Dubai', 'Al Quoz', 'Motor City', 'Arabian Ranches', 'Emirates Hills',
-  'Mirdif', 'Silicon Oasis', 'Sports City', 'Jumeirah Village Circle', 'Other',
+  'Downtown Dubai',
+  'Dubai Marina',
+  'JBR',
+  'Palm Jumeirah',
+  'Business Bay',
+  'DIFC',
+  'Jumeirah',
+  'Jumeirah Beach Residence',
+  'Al Barsha',
+  'Deira',
+  'Bur Dubai',
+  'Al Quoz',
+  'Motor City',
+  'Arabian Ranches',
+  'Emirates Hills',
+  'Mirdif',
+  'Silicon Oasis',
+  'Sports City',
+  'Jumeirah Village Circle',
+  'Other',
 ];
 
 export default function ClientDetailsForm({
@@ -48,7 +64,9 @@ export default function ClientDetailsForm({
           <CheckCircle size={32} className="text-green-600" />
         </div>
         <h3 className="text-xl font-bold text-foreground mb-2">Opening WhatsApp...</h3>
-        <p className="text-muted-foreground text-sm">Your booking details are pre-filled. Just send the message to confirm!</p>
+        <p className="text-muted-foreground text-sm">
+          Your booking details are pre-filled. Just send the message to confirm!
+        </p>
       </div>
     );
   }
@@ -57,7 +75,9 @@ export default function ClientDetailsForm({
     <div>
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-1">Your Details</h2>
-        <p className="text-muted-foreground text-sm">We'll use this to confirm your appointment via WhatsApp.</p>
+        <p className="text-muted-foreground text-sm">
+          We&apos;ll use this to confirm your appointment via WhatsApp.
+        </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -102,11 +122,13 @@ export default function ClientDetailsForm({
           <label className="block text-sm font-semibold text-foreground mb-1.5">
             WhatsApp Number <span className="text-red-500">*</span>
           </label>
-          <p className="text-xs text-muted-foreground mb-2">We'll send confirmation to this number</p>
+          <p className="text-xs text-muted-foreground mb-2">
+            We&apos;ll send confirmation to this number
+          </p>
           <input
             {...register('phone', {
               required: 'Phone number is required',
-              pattern: { value: /^[\d\s\+\-\(\)]{9,15}$/, message: 'Enter a valid phone number' },
+              pattern: { value: /^[\d\s+\-()]{9,15}$/, message: 'Enter a valid phone number' },
             })}
             type="tel"
             placeholder="+971 50 000 0000"
@@ -114,18 +136,23 @@ export default function ClientDetailsForm({
               errors.phone ? 'border-red-400' : 'border-border focus:border-primary'
             }`}
           />
-          {errors.phone && (
-            <p className="text-xs text-red-500 mt-1">{errors.phone.message}</p>
-          )}
+          {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone.message}</p>}
         </div>
 
         {/* Email */}
         <div>
-          <label className="block text-sm font-semibold text-foreground mb-1.5">Email Address</label>
-          <p className="text-xs text-muted-foreground mb-2">Optional — for booking confirmation email</p>
+          <label className="block text-sm font-semibold text-foreground mb-1.5">
+            Email Address
+          </label>
+          <p className="text-xs text-muted-foreground mb-2">
+            Optional — for booking confirmation email
+          </p>
           <input
             {...register('email', {
-              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Enter a valid email address' },
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Enter a valid email address',
+              },
             })}
             type="email"
             placeholder="nour@example.com"
@@ -133,9 +160,7 @@ export default function ClientDetailsForm({
               errors.email ? 'border-red-400' : 'border-border focus:border-primary'
             }`}
           />
-          {errors.email && (
-            <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
-          )}
+          {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>}
         </div>
 
         {/* Area */}
@@ -151,12 +176,12 @@ export default function ClientDetailsForm({
           >
             <option value="">Select your area</option>
             {DUBAI_AREAS.map((area) => (
-              <option key={`area-${area}`} value={area}>{area}</option>
+              <option key={`area-${area}`} value={area}>
+                {area}
+              </option>
             ))}
           </select>
-          {errors.area && (
-            <p className="text-xs text-red-500 mt-1">{errors.area.message}</p>
-          )}
+          {errors.area && <p className="text-xs text-red-500 mt-1">{errors.area.message}</p>}
         </div>
 
         {/* Full address */}
@@ -164,24 +189,31 @@ export default function ClientDetailsForm({
           <label className="block text-sm font-semibold text-foreground mb-1.5">
             Full Address <span className="text-red-500">*</span>
           </label>
-          <p className="text-xs text-muted-foreground mb-2">Building name, apartment/villa number, street</p>
+          <p className="text-xs text-muted-foreground mb-2">
+            Building name, apartment/villa number, street
+          </p>
           <textarea
-            {...register('address', { required: 'Address is required', minLength: { value: 10, message: 'Please provide a complete address' } })}
+            {...register('address', {
+              required: 'Address is required',
+              minLength: { value: 10, message: 'Please provide a complete address' },
+            })}
             rows={3}
             placeholder="Marina Gate Tower 1, Apt 2204, Dubai Marina"
             className={`w-full px-4 py-3 rounded-xl border bg-white text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none ${
               errors.address ? 'border-red-400' : 'border-border focus:border-primary'
             }`}
           />
-          {errors.address && (
-            <p className="text-xs text-red-500 mt-1">{errors.address.message}</p>
-          )}
+          {errors.address && <p className="text-xs text-red-500 mt-1">{errors.address.message}</p>}
         </div>
 
         {/* Notes */}
         <div>
-          <label className="block text-sm font-semibold text-foreground mb-1.5">Special Requests or Notes</label>
-          <p className="text-xs text-muted-foreground mb-2">Allergies, preferences, health conditions</p>
+          <label className="block text-sm font-semibold text-foreground mb-1.5">
+            Special Requests or Notes
+          </label>
+          <p className="text-xs text-muted-foreground mb-2">
+            Allergies, preferences, health conditions
+          </p>
           <textarea
             {...register('notes')}
             rows={2}

@@ -10,7 +10,8 @@ const rituals = [
     duration: '120 min',
     price: 299,
     services: ['Swedish Relaxing (60 min)', 'Aromatherapy Enhancement', 'Collagen Face Mask'],
-    description: 'Begin with a full-body Swedish massage using custom-blended aromatherapy oils, followed by a nourishing collagen face mask for complete head-to-toe restoration.',
+    description:
+      'Begin with a full-body Swedish massage using custom-blended aromatherapy oils, followed by a nourishing collagen face mask for complete head-to-toe restoration.',
     highlight: true,
     badge: 'Best Seller',
     gradient: 'from-amber-900/80 via-stone-900/90 to-zinc-900',
@@ -23,7 +24,8 @@ const rituals = [
     duration: '120 min',
     price: 349,
     services: ['Maderotherapy (60 min)', 'Buccal Facial Massage (30 min)', 'Collagen Face Mask'],
-    description: 'A transformative body sculpting session with maderotherapy followed by the signature buccal facial massage for defined contours and lifted features.',
+    description:
+      'A transformative body sculpting session with maderotherapy followed by the signature buccal facial massage for defined contours and lifted features.',
     highlight: false,
     badge: 'Premium',
     gradient: 'from-rose-900/80 via-pink-900/90 to-fuchsia-900',
@@ -36,7 +38,8 @@ const rituals = [
     duration: '90 min',
     price: 270,
     services: ['Lymphatic Drainage (60 min)', 'Reflexology (30 min)'],
-    description: 'A therapeutic detox journey combining full-body lymphatic drainage with targeted reflexology to activate the body\'s natural healing and cleansing systems.',
+    description:
+      "A therapeutic detox journey combining full-body lymphatic drainage with targeted reflexology to activate the body's natural healing and cleansing systems.",
     highlight: false,
     badge: 'Wellness',
     gradient: 'from-violet-900/80 via-purple-900/90 to-indigo-900',
@@ -50,12 +53,13 @@ export default function RitualsSection() {
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">Curated Experiences</span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Signature Rituals
-          </h2>
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">
+            Curated Experiences
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">Signature Rituals</h2>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Thoughtfully curated multi-treatment packages for a complete luxury spa experience at home.
+            Thoughtfully curated multi-treatment packages for a complete luxury spa experience at
+            home.
           </p>
         </div>
 
@@ -78,7 +82,10 @@ export default function RitualsSection() {
               <div className="relative z-10 p-8">
                 <div className="flex items-center gap-2 mb-4">
                   <Sparkles size={16} style={{ color: ritual?.accentColor }} />
-                  <span className="text-xs font-medium uppercase tracking-widest" style={{ color: ritual?.accentColor }}>
+                  <span
+                    className="text-xs font-medium uppercase tracking-widest"
+                    style={{ color: ritual?.accentColor }}
+                  >
                     {ritual?.tagline}
                   </span>
                 </div>
@@ -89,8 +96,14 @@ export default function RitualsSection() {
                 {/* Services included */}
                 <ul className="space-y-2 mb-8">
                   {ritual?.services?.map((s) => (
-                    <li key={`ritual-service-${ritual?.id}-${s}`} className="flex items-center gap-2 text-sm text-white/80">
-                      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: ritual?.accentColor }} />
+                    <li
+                      key={`ritual-service-${ritual?.id}-${s}`}
+                      className="flex items-center gap-2 text-sm text-white/80"
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full shrink-0"
+                        style={{ backgroundColor: ritual?.accentColor }}
+                      />
                       {s}
                     </li>
                   ))}

@@ -19,10 +19,28 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { id: 'nav-dashboard', label: 'Dashboard', icon: LayoutDashboard, href: '/admin-dashboard', badge: null },
-  { id: 'nav-bookings', label: 'Bookings', icon: CalendarDays, href: '/admin-dashboard', badge: '3' },
+  {
+    id: 'nav-dashboard',
+    label: 'Dashboard',
+    icon: LayoutDashboard,
+    href: '/admin-dashboard',
+    badge: null,
+  },
+  {
+    id: 'nav-bookings',
+    label: 'Bookings',
+    icon: CalendarDays,
+    href: '/admin-dashboard',
+    badge: '3',
+  },
   { id: 'nav-clients', label: 'Clients', icon: Users, href: '/admin-dashboard', badge: null },
-  { id: 'nav-analytics', label: 'Analytics', icon: TrendingUp, href: '/admin-dashboard', badge: null },
+  {
+    id: 'nav-analytics',
+    label: 'Analytics',
+    icon: TrendingUp,
+    href: '/admin-dashboard',
+    badge: null,
+  },
   { id: 'nav-settings', label: 'Settings', icon: Settings, href: '/admin-dashboard', badge: null },
 ];
 
@@ -40,7 +58,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         }`}
       >
         {/* Logo */}
-        <div className={`flex items-center gap-3 px-4 h-16 border-b border-white/10 ${collapsed ? 'justify-center' : ''}`}>
+        <div
+          className={`flex items-center gap-3 px-4 h-16 border-b border-white/10 ${collapsed ? 'justify-center' : ''}`}
+        >
           <AppLogo src="/assets/images/logo-lh-1777721812389.png" size={32} />
           {!collapsed && (
             <span className="font-bold text-sm tracking-tight whitespace-nowrap overflow-hidden">
@@ -59,7 +79,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 relative group ${
                   isActive
-                    ? 'bg-primary/20 text-primary' :'text-white/60 hover:bg-white/10 hover:text-white'
+                    ? 'bg-primary/20 text-primary'
+                    : 'text-white/60 hover:bg-white/10 hover:text-white'
                 }`}
               >
                 <item.icon size={18} className="shrink-0" />
@@ -119,7 +140,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <AppLogo src="/assets/images/logo-lh-1777721812389.png" size={28} />
                 <span className="font-bold text-sm">LumeaHomeSpa</span>
               </div>
-              <button onClick={() => setMobileOpen(false)} className="text-white/60 hover:text-white">
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="text-white/60 hover:text-white"
+              >
                 <X size={20} />
               </button>
             </div>
@@ -163,7 +187,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button className="relative p-2 rounded-full hover:bg-muted transition-colors" aria-label="Notifications">
+            <button
+              className="relative p-2 rounded-full hover:bg-muted transition-colors"
+              aria-label="Notifications"
+            >
               <Bell size={18} className="text-muted-foreground" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500" />
             </button>
@@ -174,9 +201,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-auto p-6 lg:p-8">
-          {children}
-        </main>
+        <main className="flex-1 overflow-auto p-6 lg:p-8">{children}</main>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { CalendarCheck, TrendingUp, AlertCircle, CheckCircle2, XCircle } from 'l
 const kpis = [
   {
     id: 'kpi-today',
-    label: "Today\'s Bookings",
+    label: "Today's Bookings",
     value: '7',
     sub: '3 confirmed · 4 pending',
     icon: CalendarCheck,
@@ -91,16 +91,23 @@ export default function KPIGrid() {
                 </span>
               )}
             </div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">{kpi?.label}</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">
+              {kpi?.label}
+            </p>
             <p className="text-3xl font-bold text-foreground tabular-nums mb-0.5">
               {kpi?.isCurrency ? (
-                <span>{kpi?.value} <span className="text-sm font-medium text-muted-foreground">AED</span></span>
+                <span>
+                  {kpi?.value}{' '}
+                  <span className="text-sm font-medium text-muted-foreground">AED</span>
+                </span>
               ) : (
                 kpi?.value
               )}
             </p>
             <p className="text-xs text-muted-foreground mb-2">{kpi?.sub}</p>
-            <p className={`text-xs font-medium ${kpi?.trendUp ? 'text-emerald-600' : 'text-amber-600'}`}>
+            <p
+              className={`text-xs font-medium ${kpi?.trendUp ? 'text-emerald-600' : 'text-amber-600'}`}
+            >
               {kpi?.trend}
             </p>
           </div>

@@ -33,10 +33,7 @@ export default function PublicHeader() {
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <AppLogo
-            src="/assets/images/logo-lh-1777721812389.png"
-            size={44}
-          />
+          <AppLogo src="/assets/images/logo-lh-1777721812389.png" size={44} />
           <span className="font-bold text-xl tracking-tight text-foreground">
             Lumea<span className="text-primary">HomeSpa</span>
           </span>
@@ -46,7 +43,11 @@ export default function PublicHeader() {
         <nav className="hidden md:flex items-center gap-1">
           {navLinks?.map((link) =>
             link?.highlight ? (
-              <Link key={`nav-${link?.label}`} href={link?.href} className="btn-primary ml-4 text-sm">
+              <Link
+                key={`nav-${link?.label}`}
+                href={link?.href}
+                className="btn-primary ml-4 text-sm"
+              >
                 Book Now
               </Link>
             ) : (
@@ -91,7 +92,8 @@ export default function PublicHeader() {
                 onClick={() => setMobileOpen(false)}
                 className={`px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                   link?.highlight
-                    ? 'bg-primary text-white text-center mt-2' :'text-foreground hover:bg-secondary'
+                    ? 'bg-primary text-white text-center mt-2'
+                    : 'text-foreground hover:bg-secondary'
                 }`}
               >
                 {link?.label}

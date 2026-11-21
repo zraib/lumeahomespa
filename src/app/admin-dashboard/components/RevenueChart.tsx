@@ -20,7 +20,15 @@ const weeklyData = [
   { day: 'Sun 03', revenue: 0, bookings: 0 },
 ];
 
-function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number; name: string }>; label?: string }) {
+function CustomTooltip({
+  active,
+  payload,
+  label,
+}: {
+  active?: boolean;
+  payload?: Array<{ value: number; name: string }>;
+  label?: string;
+}) {
   if (!active || !payload || !payload.length) return null;
   return (
     <div className="bg-white border border-border rounded-xl px-4 py-3 shadow-lg">
