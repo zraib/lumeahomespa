@@ -4,26 +4,147 @@ import { Clock, ArrowRight, Check } from 'lucide-react';
 import type { SelectedService } from './BookingFlow';
 
 const allServices = [
-  { id: 'swedish-relaxing', name: 'Swedish Relaxing', price: 149, duration: '60 min', category: 'Body Massage', popular: true },
-  { id: 'balinese', name: 'Balinese Massage', price: 149, duration: '60 min', category: 'Body Massage', popular: false },
-  { id: 'aromatherapy', name: 'Aromatherapy', price: 149, duration: '60 min', category: 'Body Massage', popular: false },
-  { id: 'deep-tissue', name: 'Deep Tissue', price: 190, duration: '60 min', category: 'Body Massage', popular: false },
-  { id: 'maderotherapy', name: 'Maderotherapy', price: 190, duration: '60 min', category: 'Body Contouring', popular: false },
-  { id: 'lymphatic', name: 'Lymphatic Drainage', price: 190, duration: '60 min', category: 'Therapeutic', popular: false },
-  { id: 'thai-massage', name: 'Thai Massage', price: 190, duration: '60 min', category: 'Body Massage', popular: false },
-  { id: 'hot-stone', name: 'Hot Stone', price: 170, duration: '60 min', category: 'Signature', popular: true },
-  { id: 'face-lifting', name: 'Face Lifting', price: 149, duration: '60 min', category: 'Facial', popular: false },
-  { id: 'buccal-massage', name: 'Buccal Massage', price: 200, duration: '60 min', category: 'Facial', popular: false },
-  { id: 'reflexology-30', name: 'Reflexology', price: 100, duration: '30 min', category: 'Therapeutic', popular: false },
-  { id: 'reflexology-60', name: 'Reflexology', price: 200, duration: '60 min', category: 'Therapeutic', popular: false },
-  { id: 'face-mask-collagen', name: 'Face Mask Collagen', price: 30, duration: 'Add-on', category: 'Add-on', popular: false },
+  {
+    id: 'swedish-relaxing',
+    name: 'Swedish Relaxing',
+    price: 149,
+    duration: '60 min',
+    category: 'Body Massage',
+    popular: true,
+  },
+  {
+    id: 'balinese',
+    name: 'Balinese Massage',
+    price: 149,
+    duration: '60 min',
+    category: 'Body Massage',
+    popular: false,
+  },
+  {
+    id: 'aromatherapy',
+    name: 'Aromatherapy',
+    price: 149,
+    duration: '60 min',
+    category: 'Body Massage',
+    popular: false,
+  },
+  {
+    id: 'deep-tissue',
+    name: 'Deep Tissue',
+    price: 190,
+    duration: '60 min',
+    category: 'Body Massage',
+    popular: false,
+  },
+  {
+    id: 'maderotherapy',
+    name: 'Maderotherapy',
+    price: 190,
+    duration: '60 min',
+    category: 'Body Contouring',
+    popular: false,
+  },
+  {
+    id: 'lymphatic',
+    name: 'Lymphatic Drainage',
+    price: 190,
+    duration: '60 min',
+    category: 'Therapeutic',
+    popular: false,
+  },
+  {
+    id: 'thai-massage',
+    name: 'Thai Massage',
+    price: 190,
+    duration: '60 min',
+    category: 'Body Massage',
+    popular: false,
+  },
+  {
+    id: 'hot-stone',
+    name: 'Hot Stone',
+    price: 170,
+    duration: '60 min',
+    category: 'Signature',
+    popular: true,
+  },
+  {
+    id: 'face-lifting',
+    name: 'Face Lifting',
+    price: 149,
+    duration: '60 min',
+    category: 'Facial',
+    popular: false,
+  },
+  {
+    id: 'buccal-massage',
+    name: 'Buccal Massage',
+    price: 200,
+    duration: '60 min',
+    category: 'Facial',
+    popular: false,
+  },
+  {
+    id: 'reflexology-30',
+    name: 'Reflexology',
+    price: 100,
+    duration: '30 min',
+    category: 'Therapeutic',
+    popular: false,
+  },
+  {
+    id: 'reflexology-60',
+    name: 'Reflexology',
+    price: 200,
+    duration: '60 min',
+    category: 'Therapeutic',
+    popular: false,
+  },
+  {
+    id: 'face-mask-collagen',
+    name: 'Face Mask Collagen',
+    price: 30,
+    duration: 'Add-on',
+    category: 'Add-on',
+    popular: false,
+  },
   // Rituals
-  { id: 'ritual-serenity', name: 'Serenity Ritual', price: 299, duration: '120 min', category: 'Ritual Package', popular: true },
-  { id: 'ritual-sculpt', name: 'Sculpt & Glow Ritual', price: 349, duration: '120 min', category: 'Ritual Package', popular: false },
-  { id: 'ritual-detox', name: 'Detox & Renew Ritual', price: 270, duration: '90 min', category: 'Ritual Package', popular: false },
+  {
+    id: 'ritual-serenity',
+    name: 'Serenity Ritual',
+    price: 299,
+    duration: '120 min',
+    category: 'Ritual Package',
+    popular: true,
+  },
+  {
+    id: 'ritual-sculpt',
+    name: 'Sculpt & Glow Ritual',
+    price: 349,
+    duration: '120 min',
+    category: 'Ritual Package',
+    popular: false,
+  },
+  {
+    id: 'ritual-detox',
+    name: 'Detox & Renew Ritual',
+    price: 270,
+    duration: '90 min',
+    category: 'Ritual Package',
+    popular: false,
+  },
 ];
 
-const categories = ['All', 'Body Massage', 'Therapeutic', 'Signature', 'Body Contouring', 'Facial', 'Ritual Package', 'Add-on'];
+const categories = [
+  'All',
+  'Body Massage',
+  'Therapeutic',
+  'Signature',
+  'Body Contouring',
+  'Facial',
+  'Ritual Package',
+  'Add-on',
+];
 
 export default function ServiceSelector({
   onSelect,
@@ -55,7 +176,8 @@ export default function ServiceSelector({
             onClick={() => setActiveCategory(cat)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-150 ${
               activeCategory === cat
-                ? 'bg-primary text-white' :'bg-muted text-muted-foreground hover:bg-secondary'
+                ? 'bg-primary text-white'
+                : 'bg-muted text-muted-foreground hover:bg-secondary'
             }`}
           >
             {cat}

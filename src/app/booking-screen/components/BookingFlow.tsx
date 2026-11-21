@@ -91,7 +91,9 @@ export default function BookingFlow() {
       {/* Hero strip */}
       <div className="bg-accent py-14 px-6">
         <div className="max-w-screen-xl mx-auto text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">Home Massage Dubai</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">
+            Home Massage Dubai
+          </span>
           <h1 className="text-4xl font-bold text-white mb-2">Book Your Session</h1>
           <p className="text-white/60 text-base">Select your treatment and we'll come to you.</p>
         </div>
@@ -113,11 +115,7 @@ export default function BookingFlow() {
               />
             )}
             {currentStep === 3 && (
-              <ClientDetailsForm
-                onConfirm={handleConfirm}
-                onBack={handleBack}
-                booking={booking}
-              />
+              <ClientDetailsForm onConfirm={handleConfirm} onBack={handleBack} booking={booking} />
             )}
           </div>
 

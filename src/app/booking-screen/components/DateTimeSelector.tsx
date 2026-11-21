@@ -4,8 +4,18 @@ import { ChevronLeft, ChevronRight, ArrowRight, ArrowLeft, Clock } from 'lucide-
 import type { SelectedDateTime } from './BookingFlow';
 
 const TIME_SLOTS = [
-  '09:00', '10:00', '11:00', '12:00', '13:00',
-  '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00',
+  '09:00',
+  '10:00',
+  '11:00',
+  '12:00',
+  '13:00',
+  '14:00',
+  '15:00',
+  '16:00',
+  '17:00',
+  '18:00',
+  '19:00',
+  '20:00',
 ];
 
 // Mock unavailable slots
@@ -22,8 +32,21 @@ function formatDisplayDate(dateStr: string): string {
   const year = parseInt(parts[0]);
   const month = parseInt(parts[1]) - 1;
   const day = parseInt(parts[2]);
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const d = new Date(year, month, day);
   return `${days[d.getDay()]}, ${day} ${months[month]} ${year}`;
 }
@@ -43,7 +66,20 @@ function getFirstDayOfMonth(year: number, month: number) {
   return new Date(year, month, 1).getDay();
 }
 
-const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTH_NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 export default function DateTimeSelector({
   onSelect,
@@ -64,12 +100,16 @@ export default function DateTimeSelector({
   const firstDay = getFirstDayOfMonth(viewYear, viewMonth);
 
   const prevMonth = () => {
-    if (viewMonth === 0) { setViewMonth(11); setViewYear(viewYear - 1); }
-    else setViewMonth(viewMonth - 1);
+    if (viewMonth === 0) {
+      setViewMonth(11);
+      setViewYear(viewYear - 1);
+    } else setViewMonth(viewMonth - 1);
   };
   const nextMonth = () => {
-    if (viewMonth === 11) { setViewMonth(0); setViewYear(viewYear + 1); }
-    else setViewMonth(viewMonth + 1);
+    if (viewMonth === 11) {
+      setViewMonth(0);
+      setViewYear(viewYear + 1);
+    } else setViewMonth(viewMonth + 1);
   };
 
   const isDatePast = (day: number) => {
@@ -118,7 +158,10 @@ export default function DateTimeSelector({
           {/* Day headers */}
           <div className="grid grid-cols-7 mb-2">
             {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((d) => (
-              <div key={`cal-hdr-${d}`} className="text-center text-xs font-semibold text-muted-foreground py-1">
+              <div
+                key={`cal-hdr-${d}`}
+                className="text-center text-xs font-semibold text-muted-foreground py-1"
+              >
                 {d}
               </div>
             ))}
@@ -141,14 +184,18 @@ export default function DateTimeSelector({
                 <button
                   key={`cal-day-${dateStr}`}
                   disabled={isPast}
-                  onClick={() => { setSelectedDate(dateStr); setSelectedTime(null); }}
+                  onClick={() => {
+                    setSelectedDate(dateStr);
+                    setSelectedTime(null);
+                  }}
                   className={`aspect-square rounded-lg text-sm font-medium transition-all duration-150 flex items-center justify-center relative ${
                     isPast
                       ? 'text-muted-foreground/30 cursor-not-allowed'
                       : isSelected
-                      ? 'bg-primary text-white font-bold'
-                      : isToday
-                      ? 'border-2 border-primary text-primary font-bold hover:bg-primary/10' :'text-foreground hover:bg-primary/10 hover:text-primary'
+                        ? 'bg-primary text-white font-bold'
+                        : isToday
+                          ? 'border-2 border-primary text-primary font-bold hover:bg-primary/10'
+                          : 'text-foreground hover:bg-primary/10 hover:text-primary'
                   }`}
                 >
                   {day}
@@ -161,8 +208,12 @@ export default function DateTimeSelector({
           </div>
 
           <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-primary/50" /> Partial availability</span>
-            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-primary" /> Selected</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-primary/50" /> Partial availability
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-primary" /> Selected
+            </span>
           </div>
         </div>
 
@@ -192,7 +243,8 @@ export default function DateTimeSelector({
                       isUnavailable
                         ? 'bg-muted text-muted-foreground/40 cursor-not-allowed line-through'
                         : isSelected
-                        ? 'bg-primary text-white font-bold' :'bg-muted text-foreground hover:bg-primary/15 hover:text-primary'
+                          ? 'bg-primary text-white font-bold'
+                          : 'bg-muted text-foreground hover:bg-primary/15 hover:text-primary'
                     }`}
                   >
                     {formatDisplayTime(slot)}
@@ -205,10 +257,7 @@ export default function DateTimeSelector({
       </div>
 
       <div className="flex items-center gap-3 mt-6">
-        <button
-          onClick={onBack}
-          className="btn-outline flex items-center gap-2 px-6 py-3"
-        >
+        <button onClick={onBack} className="btn-outline flex items-center gap-2 px-6 py-3">
           <ArrowLeft size={15} /> Back
         </button>
         <button

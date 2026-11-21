@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Star, MapPin, Clock } from 'lucide-react';
 
-
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -28,7 +27,9 @@ export default function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-primary/10 mb-6">
             <MapPin size={13} className="text-primary" />
-            <span className="text-xs font-medium text-primary tracking-wide">Dubai Home Service</span>
+            <span className="text-xs font-medium text-primary tracking-wide">
+              Dubai Home Service
+            </span>
           </div>
 
           {/* Headline */}
@@ -38,7 +39,8 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-lg text-white/60 leading-relaxed mb-8 max-w-lg">
-            Professional massage therapists come to you. From deep tissue to buccal facial massage — experience five-star spa treatments in the comfort of your home.
+            Professional massage therapists come to you. From deep tissue to buccal facial massage —
+            experience five-star spa treatments in the comfort of your home.
           </p>
 
           {/* Stats row */}

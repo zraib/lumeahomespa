@@ -26,7 +26,7 @@ const testimonials = [
     location: 'JBR',
     rating: 5,
     service: 'Deep Tissue',
-    text: 'I\'ve tried many spa services in Dubai but LumeaHomeSpa is on another level. The deep tissue massage addressed years of back pain. The convenience of home service is unbeatable.',
+    text: "I've tried many spa services in Dubai but LumeaHomeSpa is on another level. The deep tissue massage addressed years of back pain. The convenience of home service is unbeatable.",
     date: '2 weeks ago',
   },
   {
@@ -53,7 +53,7 @@ const testimonials = [
     location: 'DIFC',
     rating: 5,
     service: 'Thai Massage',
-    text: 'Best Thai massage I\'ve had outside of Thailand! The stretching and pressure techniques were perfect. Booking was so easy via WhatsApp and confirmation was instant.',
+    text: "Best Thai massage I've had outside of Thailand! The stretching and pressure techniques were perfect. Booking was so easy via WhatsApp and confirmation was instant.",
     date: '1 month ago',
   },
 ];
@@ -63,12 +63,14 @@ export default function TestimonialsSection() {
     <section id="about" className="py-24 bg-background">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-16">
-          <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">Client Stories</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 block">
+            Client Stories
+          </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             What Our Clients Say
           </h2>
           <div className="flex items-center justify-center gap-2 mt-4">
-            {[1,2,3,4,5]?.map((i) => (
+            {[1, 2, 3, 4, 5]?.map((i) => (
               <Star key={`rating-star-${i}`} size={20} className="text-primary fill-primary" />
             ))}
             <span className="text-sm font-semibold text-foreground ml-2">4.9</span>
@@ -97,7 +99,11 @@ export default function TestimonialsSection() {
 
               <div className="flex items-center gap-1 mb-3">
                 {Array.from({ length: review?.rating })?.map((_, i) => (
-                  <Star key={`review-star-${review?.id}-${i}`} size={13} className="text-primary fill-primary" />
+                  <Star
+                    key={`review-star-${review?.id}-${i}`}
+                    size={13}
+                    className="text-primary fill-primary"
+                  />
                 ))}
               </div>
 

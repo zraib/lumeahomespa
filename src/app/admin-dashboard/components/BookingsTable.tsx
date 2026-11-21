@@ -1,6 +1,15 @@
 'use client';
 import React, { useState } from 'react';
-import { Search, ChevronUp, ChevronDown, MessageCircle, Trash2, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
+import {
+  Search,
+  ChevronUp,
+  ChevronDown,
+  MessageCircle,
+  Trash2,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+} from 'lucide-react';
 
 type BookingStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled';
 
@@ -18,21 +27,186 @@ type Booking = {
 };
 
 const allBookings: Booking[] = [
-  { id: 'BK-0047', client: 'Nour Al-Rashid', phone: '+971 55 123 4567', service: 'Buccal Massage', date: '02 May 2026', time: '09:00', area: 'Dubai Marina', duration: '60 min', price: 200, status: 'confirmed' },
-  { id: 'BK-0046', client: 'Sarah Mitchell', phone: '+971 50 234 5678', service: 'Serenity Ritual', date: '02 May 2026', time: '11:00', area: 'Downtown Dubai', duration: '120 min', price: 299, status: 'confirmed' },
-  { id: 'BK-0045', client: 'Fatima Al-Zaabi', phone: '+971 52 345 6789', service: 'Swedish Relaxing', date: '02 May 2026', time: '13:00', area: 'JBR', duration: '60 min', price: 149, status: 'pending' },
-  { id: 'BK-0044', client: 'Emma Thompson', phone: '+971 56 456 7890', service: 'Hot Stone', date: '02 May 2026', time: '15:00', area: 'Palm Jumeirah', duration: '60 min', price: 170, status: 'confirmed' },
-  { id: 'BK-0043', client: 'Layla Hassan', phone: '+971 54 567 8901', service: 'Lymphatic Drainage', date: '02 May 2026', time: '17:00', area: 'Business Bay', duration: '60 min', price: 190, status: 'pending' },
-  { id: 'BK-0042', client: 'Priya Sharma', phone: '+971 55 678 9012', service: 'Deep Tissue', date: '02 May 2026', time: '19:00', area: 'DIFC', duration: '60 min', price: 190, status: 'pending' },
-  { id: 'BK-0041', client: 'Amira Khalil', phone: '+971 50 789 0123', service: 'Face Lifting', date: '02 May 2026', time: '20:00', area: 'Jumeirah', duration: '60 min', price: 149, status: 'pending' },
-  { id: 'BK-0040', client: 'Rania Al-Maktoum', phone: '+971 52 890 1234', service: 'Thai Massage', date: '01 May 2026', time: '10:00', area: 'Emirates Hills', duration: '60 min', price: 190, status: 'completed' },
-  { id: 'BK-0039', client: 'Hessa Al-Falasi', phone: '+971 56 901 2345', service: 'Aromatherapy', date: '01 May 2026', time: '14:00', area: 'Al Barsha', duration: '60 min', price: 149, status: 'completed' },
-  { id: 'BK-0038', client: 'Olivia Bennett', phone: '+971 50 012 3456', service: 'Detox & Renew Ritual', date: '01 May 2026', time: '16:00', area: 'Jumeirah Village Circle', duration: '90 min', price: 270, status: 'completed' },
-  { id: 'BK-0037', client: 'Mariam Al-Qasimi', phone: '+971 55 123 0987', service: 'Reflexology', date: '30 Apr 2026', time: '11:00', area: 'Deira', duration: '60 min', price: 200, status: 'completed' },
-  { id: 'BK-0036', client: 'Zara Ahmed', phone: '+971 52 234 1098', service: 'Swedish Relaxing', date: '30 Apr 2026', time: '13:00', area: 'Motor City', duration: '60 min', price: 149, status: 'cancelled' },
-  { id: 'BK-0035', client: 'Isabella Rossi', phone: '+971 54 345 2109', service: 'Sculpt & Glow Ritual', date: '30 Apr 2026', time: '15:00', area: 'Palm Jumeirah', duration: '120 min', price: 349, status: 'completed' },
-  { id: 'BK-0034', client: 'Noura Al-Suwaidi', phone: '+971 56 456 3210', service: 'Buccal Massage', date: '29 Apr 2026', time: '10:00', area: 'Downtown Dubai', duration: '60 min', price: 200, status: 'completed' },
-  { id: 'BK-0033', client: 'Chloe Dubois', phone: '+971 50 567 4321', service: 'Lymphatic Drainage', date: '29 Apr 2026', time: '12:00', area: 'Business Bay', duration: '60 min', price: 190, status: 'cancelled' },
+  {
+    id: 'BK-0047',
+    client: 'Nour Al-Rashid',
+    phone: '+971 55 123 4567',
+    service: 'Buccal Massage',
+    date: '02 May 2026',
+    time: '09:00',
+    area: 'Dubai Marina',
+    duration: '60 min',
+    price: 200,
+    status: 'confirmed',
+  },
+  {
+    id: 'BK-0046',
+    client: 'Sarah Mitchell',
+    phone: '+971 50 234 5678',
+    service: 'Serenity Ritual',
+    date: '02 May 2026',
+    time: '11:00',
+    area: 'Downtown Dubai',
+    duration: '120 min',
+    price: 299,
+    status: 'confirmed',
+  },
+  {
+    id: 'BK-0045',
+    client: 'Fatima Al-Zaabi',
+    phone: '+971 52 345 6789',
+    service: 'Swedish Relaxing',
+    date: '02 May 2026',
+    time: '13:00',
+    area: 'JBR',
+    duration: '60 min',
+    price: 149,
+    status: 'pending',
+  },
+  {
+    id: 'BK-0044',
+    client: 'Emma Thompson',
+    phone: '+971 56 456 7890',
+    service: 'Hot Stone',
+    date: '02 May 2026',
+    time: '15:00',
+    area: 'Palm Jumeirah',
+    duration: '60 min',
+    price: 170,
+    status: 'confirmed',
+  },
+  {
+    id: 'BK-0043',
+    client: 'Layla Hassan',
+    phone: '+971 54 567 8901',
+    service: 'Lymphatic Drainage',
+    date: '02 May 2026',
+    time: '17:00',
+    area: 'Business Bay',
+    duration: '60 min',
+    price: 190,
+    status: 'pending',
+  },
+  {
+    id: 'BK-0042',
+    client: 'Priya Sharma',
+    phone: '+971 55 678 9012',
+    service: 'Deep Tissue',
+    date: '02 May 2026',
+    time: '19:00',
+    area: 'DIFC',
+    duration: '60 min',
+    price: 190,
+    status: 'pending',
+  },
+  {
+    id: 'BK-0041',
+    client: 'Amira Khalil',
+    phone: '+971 50 789 0123',
+    service: 'Face Lifting',
+    date: '02 May 2026',
+    time: '20:00',
+    area: 'Jumeirah',
+    duration: '60 min',
+    price: 149,
+    status: 'pending',
+  },
+  {
+    id: 'BK-0040',
+    client: 'Rania Al-Maktoum',
+    phone: '+971 52 890 1234',
+    service: 'Thai Massage',
+    date: '01 May 2026',
+    time: '10:00',
+    area: 'Emirates Hills',
+    duration: '60 min',
+    price: 190,
+    status: 'completed',
+  },
+  {
+    id: 'BK-0039',
+    client: 'Hessa Al-Falasi',
+    phone: '+971 56 901 2345',
+    service: 'Aromatherapy',
+    date: '01 May 2026',
+    time: '14:00',
+    area: 'Al Barsha',
+    duration: '60 min',
+    price: 149,
+    status: 'completed',
+  },
+  {
+    id: 'BK-0038',
+    client: 'Olivia Bennett',
+    phone: '+971 50 012 3456',
+    service: 'Detox & Renew Ritual',
+    date: '01 May 2026',
+    time: '16:00',
+    area: 'Jumeirah Village Circle',
+    duration: '90 min',
+    price: 270,
+    status: 'completed',
+  },
+  {
+    id: 'BK-0037',
+    client: 'Mariam Al-Qasimi',
+    phone: '+971 55 123 0987',
+    service: 'Reflexology',
+    date: '30 Apr 2026',
+    time: '11:00',
+    area: 'Deira',
+    duration: '60 min',
+    price: 200,
+    status: 'completed',
+  },
+  {
+    id: 'BK-0036',
+    client: 'Zara Ahmed',
+    phone: '+971 52 234 1098',
+    service: 'Swedish Relaxing',
+    date: '30 Apr 2026',
+    time: '13:00',
+    area: 'Motor City',
+    duration: '60 min',
+    price: 149,
+    status: 'cancelled',
+  },
+  {
+    id: 'BK-0035',
+    client: 'Isabella Rossi',
+    phone: '+971 54 345 2109',
+    service: 'Sculpt & Glow Ritual',
+    date: '30 Apr 2026',
+    time: '15:00',
+    area: 'Palm Jumeirah',
+    duration: '120 min',
+    price: 349,
+    status: 'completed',
+  },
+  {
+    id: 'BK-0034',
+    client: 'Noura Al-Suwaidi',
+    phone: '+971 56 456 3210',
+    service: 'Buccal Massage',
+    date: '29 Apr 2026',
+    time: '10:00',
+    area: 'Downtown Dubai',
+    duration: '60 min',
+    price: 200,
+    status: 'completed',
+  },
+  {
+    id: 'BK-0033',
+    client: 'Chloe Dubois',
+    phone: '+971 50 567 4321',
+    service: 'Lymphatic Drainage',
+    date: '29 Apr 2026',
+    time: '12:00',
+    area: 'Business Bay',
+    duration: '60 min',
+    price: 190,
+    status: 'cancelled',
+  },
 ];
 
 const statusConfig: Record<BookingStatus, { label: string; className: string }> = {
@@ -97,9 +271,7 @@ export default function BookingsTable() {
   };
 
   const handleStatusChange = (id: string, newStatus: BookingStatus) => {
-    setBookings((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, status: newStatus } : b))
-    );
+    setBookings((prev) => prev.map((b) => (b.id === id ? { ...b, status: newStatus } : b)));
     setStatusDropdownId(null);
   };
 
@@ -112,8 +284,7 @@ export default function BookingsTable() {
   };
 
   function SortIcon({ col }: { col: SortKey }) {
-    if (sortKey !== col)
-      return <ChevronUp size={12} className="text-muted-foreground/30" />;
+    if (sortKey !== col) return <ChevronUp size={12} className="text-muted-foreground/30" />;
     return sortDir === 'asc' ? (
       <ChevronUp size={12} className="text-primary" />
     ) : (
@@ -132,12 +303,18 @@ export default function BookingsTable() {
         <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
           {/* Search */}
           <div className="relative flex-1 sm:flex-none">
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Search
+              size={14}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+            />
             <input
               type="text"
               placeholder="Search bookings..."
               value={search}
-              onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setPage(1);
+              }}
               className="pl-8 pr-4 py-2 text-sm border border-border rounded-xl bg-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-full sm:w-52 transition-colors"
             />
           </div>
@@ -146,7 +323,10 @@ export default function BookingsTable() {
             <Filter size={13} className="text-muted-foreground" />
             <select
               value={statusFilter}
-              onChange={(e) => { setStatusFilter(e.target.value as BookingStatus | 'all'); setPage(1); }}
+              onChange={(e) => {
+                setStatusFilter(e.target.value as BookingStatus | 'all');
+                setPage(1);
+              }}
               className="text-sm border border-border rounded-xl bg-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors"
             >
               <option value="all">All Status</option>
@@ -203,7 +383,9 @@ export default function BookingsTable() {
                       <Search size={20} className="text-muted-foreground/40" />
                     </div>
                     <p className="text-sm font-semibold text-foreground">No bookings found</p>
-                    <p className="text-xs text-muted-foreground">Try adjusting your search or filter.</p>
+                    <p className="text-xs text-muted-foreground">
+                      Try adjusting your search or filter.
+                    </p>
                   </div>
                 </td>
               </tr>
@@ -219,30 +401,44 @@ export default function BookingsTable() {
                     }`}
                   >
                     <td className="px-4 py-3.5">
-                      <span className="text-xs font-mono font-bold text-muted-foreground">{booking.id}</span>
+                      <span className="text-xs font-mono font-bold text-muted-foreground">
+                        {booking.id}
+                      </span>
                     </td>
                     <td className="px-4 py-3.5">
                       <div>
-                        <p className="font-semibold text-foreground whitespace-nowrap">{booking.client}</p>
+                        <p className="font-semibold text-foreground whitespace-nowrap">
+                          {booking.client}
+                        </p>
                         <p className="text-xs text-muted-foreground">{booking.phone}</p>
                       </div>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span className="whitespace-nowrap font-medium text-foreground">{booking.service}</span>
+                      <span className="whitespace-nowrap font-medium text-foreground">
+                        {booking.service}
+                      </span>
                     </td>
-                    <td className="px-4 py-3.5 whitespace-nowrap text-muted-foreground">{booking.date}</td>
-                    <td className="px-4 py-3.5 whitespace-nowrap font-semibold text-foreground tabular-nums">{booking.time}</td>
-                    <td className="px-4 py-3.5 whitespace-nowrap text-muted-foreground">{booking.area}</td>
-                    <td className="px-4 py-3.5 whitespace-nowrap text-muted-foreground">{booking.duration}</td>
+                    <td className="px-4 py-3.5 whitespace-nowrap text-muted-foreground">
+                      {booking.date}
+                    </td>
+                    <td className="px-4 py-3.5 whitespace-nowrap font-semibold text-foreground tabular-nums">
+                      {booking.time}
+                    </td>
+                    <td className="px-4 py-3.5 whitespace-nowrap text-muted-foreground">
+                      {booking.area}
+                    </td>
+                    <td className="px-4 py-3.5 whitespace-nowrap text-muted-foreground">
+                      {booking.duration}
+                    </td>
                     <td className="px-4 py-3.5">
-                      <span className="font-bold text-foreground tabular-nums">{booking.price}</span>
+                      <span className="font-bold text-foreground tabular-nums">
+                        {booking.price}
+                      </span>
                     </td>
                     <td className="px-4 py-3.5 relative">
                       <button
                         onClick={() =>
-                          setStatusDropdownId(
-                            statusDropdownId === booking.id ? null : booking.id
-                          )
+                          setStatusDropdownId(statusDropdownId === booking.id ? null : booking.id)
                         }
                         className={`${sc.className} cursor-pointer hover:opacity-80 transition-opacity`}
                       >
@@ -258,7 +454,9 @@ export default function BookingsTable() {
                                 booking.status === s ? 'bg-muted/60' : ''
                               }`}
                             >
-                              <span className={statusConfig[s].className}>{statusConfig[s].label}</span>
+                              <span className={statusConfig[s].className}>
+                                {statusConfig[s].label}
+                              </span>
                             </button>
                           ))}
                         </div>
@@ -307,7 +505,10 @@ export default function BookingsTable() {
           </span>
           <select
             value={pageSize}
-            onChange={(e) => { setPageSize(Number(e.target.value)); setPage(1); }}
+            onChange={(e) => {
+              setPageSize(Number(e.target.value));
+              setPage(1);
+            }}
             className="text-xs border border-border rounded-lg px-2 py-1 bg-muted focus:outline-none focus:ring-2 focus:ring-primary/30"
           >
             {PAGE_SIZE_OPTIONS.map((s) => (
@@ -332,7 +533,12 @@ export default function BookingsTable() {
             const pg = i + 1;
             const isActive = pg === page;
             if (totalPages > 7 && pg > 2 && pg < totalPages - 1 && Math.abs(pg - page) > 1) {
-              if (pg === 3 || pg === totalPages - 2) return <span key={`page-ellipsis-${pg}`} className="text-xs text-muted-foreground px-1">…</span>;
+              if (pg === 3 || pg === totalPages - 2)
+                return (
+                  <span key={`page-ellipsis-${pg}`} className="text-xs text-muted-foreground px-1">
+                    …
+                  </span>
+                );
               return null;
             }
             return (
@@ -341,7 +547,8 @@ export default function BookingsTable() {
                 onClick={() => setPage(pg)}
                 className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-primary text-white' :'border border-border hover:bg-muted text-foreground'
+                    ? 'bg-primary text-white'
+                    : 'border border-border hover:bg-muted text-foreground'
                 }`}
               >
                 {pg}

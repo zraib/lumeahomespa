@@ -22,7 +22,15 @@ const serviceData = [
   { name: 'Reflexology', bookings: 4, color: '#A07840' },
 ];
 
-function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) {
+function CustomTooltip({
+  active,
+  payload,
+  label,
+}: {
+  active?: boolean;
+  payload?: Array<{ value: number }>;
+  label?: string;
+}) {
   if (!active || !payload || !payload.length) return null;
   return (
     <div className="bg-white border border-border rounded-xl px-3 py-2.5 shadow-lg">
@@ -40,8 +48,17 @@ export default function ServicePopularityChart() {
         <p className="text-xs text-muted-foreground">Bookings by type — last 30 days</p>
       </div>
       <ResponsiveContainer width="100%" height={220}>
-        <BarChart data={serviceData} margin={{ top: 5, right: 5, bottom: 5, left: -20 }} barSize={16}>
-          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={true} vertical={false} />
+        <BarChart
+          data={serviceData}
+          margin={{ top: 5, right: 5, bottom: 5, left: -20 }}
+          barSize={16}
+        >
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="var(--border)"
+            horizontal={true}
+            vertical={false}
+          />
           <XAxis
             dataKey="name"
             tick={{ fontSize: 10, fill: 'var(--muted-foreground)' }}

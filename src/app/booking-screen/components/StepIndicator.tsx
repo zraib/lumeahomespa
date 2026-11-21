@@ -20,7 +20,8 @@ export default function StepIndicator({
                 step.id < currentStep
                   ? 'bg-primary text-white'
                   : step.id === currentStep
-                  ? 'bg-accent text-white ring-4 ring-primary/20' :'bg-muted text-muted-foreground'
+                    ? 'bg-accent text-white ring-4 ring-primary/20'
+                    : 'bg-muted text-muted-foreground'
               }`}
             >
               {step.id < currentStep ? <Check size={16} /> : step.id}
